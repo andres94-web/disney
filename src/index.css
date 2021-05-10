@@ -1,5 +1,5 @@
 :root {
-  --bg-color: #05091b;
+  --bg-color: #01040e;
   --c-white: #f9f9f9;
 }
 
@@ -19,6 +19,7 @@ body {
   background-color: var(--bg-color);
   color: var(--c-white);
   font-family: Avenir-Roman, sans-serif;
+  position: relative;
 }
 
 a {
