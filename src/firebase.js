@@ -1,7 +1,5 @@
 import firebase from 'firebase';
 
-console.log(process.env.FIREBASE_API_KEY);
-
 const firebaseConfig = {
   apiKey: 'AIzaSyA78MwEQU6DlK_yWi6abwvpcaT1G6-MdEY',
   authDomain: 'disney-plus-clone-3bcc3.firebaseapp.com',
