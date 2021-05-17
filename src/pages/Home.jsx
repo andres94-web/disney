@@ -1,13 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImgSlider from '../components/ImgSlider';
-import Viewers from '../components/Viewers';
+import ImgSlider from '../components/sections/ImgSlider';
+import NewDisney from '../components/sections/NewDisney';
+import Originals from '../components/sections/Originals';
+import Recommends from '../components/sections/Recommends';
+import Trending from '../components/sections/Trending';
+import Viewers from '../components/sections/Viewers';
 
 const Home = () => {
   return (
     <Container>
       <ImgSlider />
       <Viewers />
+      <Recommends />
+      <NewDisney />
+      <Originals />
+      <Trending />
     </Container>
   );
 };
