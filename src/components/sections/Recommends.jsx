@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 const Recommends = () => {
   const movies = useSelector(selectRecommend);
-  console.log(movies);
   return (
     <Container>
       <h4>Recommended For You</h4>
