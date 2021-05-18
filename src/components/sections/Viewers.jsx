@@ -6,31 +6,31 @@ const Viewers = () => {
     <Container>
       <Wrap>
         <img src="/images/viewers-disney.png" alt="Disney" />
-        <video muted={true} autoPlay={true} loop={true} playsInLine={true}>
+        <video muted={true} autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/disney.mp4" type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-pixar.png" alt="Pixar" />
-        <video muted={true} autoPlay={true} loop={true} playsInLine={true}>
+        <video muted={true} autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/pixar.mp4" type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-marvel.png" alt="Marvel" />
-        <video muted={true} autoPlay={true} loop={true} playsInLine={true}>
+        <video muted={true} autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/marvel.mp4" type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-starwars.png" alt="Star Wars" />
-        <video muted={true} autoPlay={true} loop={true} playsInLine={true}>
+        <video muted={true} autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/star-wars.mp4" type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
         <img src="/images/viewers-national.png" alt="National Geographic" />
-        <video muted={true} autoPlay={true} loop={true} playsInLine={true}>
+        <video muted={true} autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/national-geographic.mp4" type="video/mp4" />
         </video>
       </Wrap>

@@ -1,44 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectOriginal } from '../../features/movie/movieSlice';
 import styled from 'styled-components';
 
 const Originals = () => {
+  const movies = useSelector(selectOriginal);
   return (
     <Container>
       <h4>Originals</h4>
       <Content>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://preview.redd.it/dg5zhxuc6py61.jpg?width=640&height=948&crop=smart&auto=webp&s=38982bc30ce9304ec49de21e3174b729eca6b241"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://preview.redd.it/dg5zhxuc6py61.jpg?width=640&height=948&crop=smart&auto=webp&s=38982bc30ce9304ec49de21e3174b729eca6b241"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://preview.redd.it/dg5zhxuc6py61.jpg?width=640&height=948&crop=smart&auto=webp&s=38982bc30ce9304ec49de21e3174b729eca6b241"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://preview.redd.it/dg5zhxuc6py61.jpg?width=640&height=948&crop=smart&auto=webp&s=38982bc30ce9304ec49de21e3174b729eca6b241"
-              alt=""
-            />
-          </Link>
-        </Wrap>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {/* {movie.id} */}
+              <Link to={'/detail/' + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
