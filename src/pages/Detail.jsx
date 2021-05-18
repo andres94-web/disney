@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import db from '../firebase';
 import styled from 'styled-components';
 
 const Detail = () => {
+  const { id } = useParams();
+  const [detailData, setDetailData] = useState({});
+
+  useEffect(() => {
+    db.collection('movies')
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDetailData(doc.data());
+        } else {
+          console.log('No such document in Firebase');
+        }
+      })
+      .catch((err) => {
+        console.log('Error getting document: ', err.message);
+      });
+  }, [id]);
+
   return (
     <Container>
       <Background>
-        <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/B409C2A425D58C32D822EB633C7CAE3DC910DC2FC62D2B1807A0BB092C531E9A/scale?width=1440&aspectRatio=1.78&format=jpeg"
-          alt=""
-        />
+        <img src={detailData.backgroundImg} alt={detailData.title} />
       </Background>
       <ImageTitle>
-        <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/2041CE26663867FC4EF20377B8625BD629E619452E23BCDB1AB259DD475C2EA1/scale?width=1440&aspectRatio=1.78"
-          alt=""
-        />
+        <img src={detailData.titleImg} alt={detailData.title} />
       </ImageTitle>
 
       <ContentMeta>
@@ -36,20 +51,11 @@ const Detail = () => {
           </GroupWatch>
         </Controls>
       </ContentMeta>
-      <Subtitle>
-        <h2>
-          2018 • 1h 58m • Science Fiction, Family, Animation, Action-Adventure
-        </h2>
-      </Subtitle>
+      <SubTitle>
+        <h2>{detailData.subTitle}</h2>
+      </SubTitle>
       <Description>
-        <p>
-          While Helen is called on to lead a campaign to bring back the Supers,
-          Bob navigates the day-to-day heroics of “normal” life at home with
-          Violet, Dash and Jack-Jack, whose superpowers are about to be
-          discovered. Their mission is derailed, however, when a new villain
-          emerges with a brilliant and dangerous plot that threatens everything.
-          But with Frozone by their side, the Parrs can take on anything.
-        </p>
+        <p>{detailData.description}</p>
       </Description>
     </Container>
   );
@@ -60,11 +66,8 @@ const Container = styled.div`
   min-height: calc(100vh - 250px);
   overflow-x: hidden;
   display: block;
-  top: 10rem;
+  top: 7rem;
   padding: 0 calc(3.5vw + 5px);
-  @media only screen and (max-width: 768px) {
-    top: 15%;
-  } ;
 `;
 
 const Background = styled.div`
@@ -99,7 +102,7 @@ const ImageTitle = styled.div`
   img {
     max-width: 600px;
     min-width: 200px;
-    width: 35vw;
+    width: 22vw;
   }
 `;
 
@@ -110,7 +113,8 @@ const ContentMeta = styled.div`
 const Controls = styled.div`
   display: flex;
   align-items: center;
-  flex-flow: row nowrap;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   margin: 24px 0;
   min-height: 56px;
 `;
@@ -138,7 +142,7 @@ const Player = styled.button`
   }
 
   &:hover {
-    background-color: rgb(198, 198, 198);
+    background-color: rgb(172, 172, 172);
   }
 
   @media only screen and (max-width: 768px) {
@@ -170,6 +174,7 @@ const AddList = styled.div`
   border-radius: 50%;
   border: 2px solid white;
   cursor: pointer;
+  transition: all 250ms ease-in-out;
 
   span {
     background-color: rgba(249, 249, 249);
@@ -189,23 +194,38 @@ const AddList = styled.div`
   &:hover {
     background-color: rgba(172, 172, 172);
   }
+
+  @media only screen and (max-width: 389px) {
+    margin-top: 10px;
+  }
 `;
 
 const GroupWatch = styled(AddList)``;
 
-const Subtitle = styled.div`
+const SubTitle = styled.div`
   color: white;
-  margin: 25px auto;
+  margin: 3rem auto;
+  min-height: 20px;
+
+  h2 {
+    font-size: 2.5rem;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
 `;
 
 const Description = styled.div`
-  width: 50%;
   p {
     color: white;
-    font-size: 18px;
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 26px;
+    padding: 16px 0;
 
     @media only screen and (max-width: 768px) {
-      font-size: 15px;
+      font-size: 1rem;
     }
   }
 `;
