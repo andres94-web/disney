@@ -15,8 +15,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
 
-  //Fetching all the data from Firebase database and store each type in its own array.
-  //Than use redux to save the data and use it in other components.
+//Obteniendo todos los datos de la base de datos de Firebase y almacenando cada tipo en su propia matriz.
+// Luego use redux para guardar los datos y usarlos en otros componentes.
 
   useEffect(() => {
     let recommends = [];

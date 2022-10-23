@@ -16,7 +16,7 @@ const Header = () => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  // Saving the user data from firebase into user reducer to use it globally in the app.
+// Guardar los datos de usuario de Firebase en User Reducer para usarlos globalmente en la aplicación.
   const setUser = (user) => {
     dispatch(
       setUserLoginDetails({
@@ -27,9 +27,9 @@ const Header = () => {
     );
   };
 
-  // Handle SignIn and SignOut functionality.
-  // if there is data of user logged in then redirect to home page.
-  // else redirect to login page
+// Manejar la funcionalidad de inicio y cierre de sesión.
+// si hay datos del usuario que inició sesión, redirija a la página de inicio.
+// de lo contrario redirigir a la página de inicio de sesión
 
   const handleAuth = () => {
     if (!userName) {
